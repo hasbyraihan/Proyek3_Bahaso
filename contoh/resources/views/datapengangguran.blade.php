@@ -13,27 +13,39 @@
   <body>
     <h1 class="text-center mb-5">Data Pengangguran</h1>
     <div class="container">
+    <button type="button" class="btn btn-success">Add +</button>
       <div class="row">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
+              <th scope="col">Name</th>
               <th scope="col">Jenis Kelamin</th>
+              <th scope="col">Nomor Telepon</th>
               <th scope="col">E-mail</th>
               <th scope="col">Alamat</th>
               <th scope="col">Kota</th>
               <th scope="col">Kode Pos</th>
+              <th scope="col">Data</th>
             </tr>
           </thead>
           <tbody>
+            @foreach ($data as $row)
             <tr>
-              <th scope="row">1</th>
-              <td>sfssf</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <th scope="row">{{$row->id}}</th>
+              <td>{{$row->nama}}</td>
+              <td>{{$row->jenkel}}</td>
+              <td>{{$row->notelp}}</td>
+              <td>{{$row->email}}</td>
+              <td>{{$row->alamat}}</td>
+              <td>{{$row->kodepos}}</td>
+              <td>{{$row->kota}}</td>
+              <td>
+                <button type="button" class="btn btn-primary">Edit</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+              </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
     <!-- Optional JavaScript -->

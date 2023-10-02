@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('unemployeds', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->enum('jenkel', ['Laki-laki', 'Perempuan']);
-            $table->integer('notelp');
+            $table->enum('jenkel', ['Pria', 'Wanita']);
+            $table->bigInteger('notelp');
+            $table->string('email');
             $table->string('alamat');
             $table->integer('kodepos');
             $table->string('kota');
