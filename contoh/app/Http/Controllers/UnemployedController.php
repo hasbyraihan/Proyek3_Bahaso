@@ -11,4 +11,13 @@ class UnemployedController extends Controller
         $data = Unemployed::all();
         return view('datapengangguran', compact('data'));
     }
+    public function tambahpengangguran(){
+        return view('tambahpengangguran');
+    } 
+
+    public function insertdata(Request $request){
+        //dd($request->all());
+        Unemployed::create($request->all());
+        return redirect()->route('pengangguran')->with('success', 'Data berhasil ditambah');
+    }
 }

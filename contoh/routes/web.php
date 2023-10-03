@@ -17,3 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/pengangguran', [UnemployedController::class, 'index'])->name('pengangguran');
+
+Route::get('/tambahpengangguran', [UnemployedController::class, 'tambahpengangguran'])->name('tambahpengangguran');
+
+Route::post('/insertdata', [UnemployedController::class, 'insertdata'])->name('insertdata');

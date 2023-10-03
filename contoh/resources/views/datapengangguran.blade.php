@@ -13,8 +13,13 @@
   <body>
     <h1 class="text-center mb-5">Data Pengangguran</h1>
     <div class="container">
-    <button type="button" class="btn btn-success">Add +</button>
+    <a href="/tambahpengangguran" class="btn btn-success">Tambah</a>
       <div class="row">
+        @if ($message = Session::get('success'))
+        @endif
+        <div class="alert alert-success" role="alert">
+            {{ $message }}
+        </div>
         <table class="table">
           <thead>
             <tr>
@@ -26,7 +31,7 @@
               <th scope="col">Alamat</th>
               <th scope="col">Kota</th>
               <th scope="col">Kode Pos</th>
-              <th scope="col">Data</th>
+              <th scope="col">Dibuat</th>
             </tr>
           </thead>
           <tbody>
@@ -40,6 +45,7 @@
               <td>{{$row->alamat}}</td>
               <td>{{$row->kodepos}}</td>
               <td>{{$row->kota}}</td>
+              <td>{{$row->created_at->format("D M Y") }}</td>
               <td>
                 <button type="button" class="btn btn-primary">Edit</button>
                 <button type="button" class="btn btn-danger">Delete</button>
