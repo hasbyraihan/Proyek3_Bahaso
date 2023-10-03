@@ -47,8 +47,8 @@
               <td>{{$row->kota}}</td>
               <td>{{$row->created_at->format("D M Y") }}</td>
               <td>
-                <button type="button" class="btn btn-primary">Edit</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <a href="/tampildata/{{$row->id}}" class="btn btn-primary">Edit</a>
+                <a href="/delete/{{$row->id}}" class="btn btn-danger">Delete</a>
               </td>
             </tr>
             @endforeach

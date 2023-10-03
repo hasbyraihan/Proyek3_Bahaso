@@ -32,4 +32,8 @@ class UnemployedController extends Controller
 
         return redirect()->route('pengangguran')->with('success', 'Data berhasil di update');
     }
+    public function destroy($id){
+        Unemployed::where('id',$id)->delete();
+        return redirect()->route('pengangguran')->with(['success'=> 'Data berhasil di hapus']);
+    }
 }

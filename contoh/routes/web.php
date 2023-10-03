@@ -24,3 +24,5 @@ Route::post('/insertdata', [UnemployedController::class, 'insertdata'])->name('i
 
 Route::get('/tampildata/{id}', [UnemployedController::class, 'tampildata'])->name('tampildata');
 Route::post('/editdata/{id}', [UnemployedController::class, 'editdata'])->name('editdata');
+
+Route::get('/delete/{id}', [UnemployedController::class, 'destroy'])->name('destroy');
