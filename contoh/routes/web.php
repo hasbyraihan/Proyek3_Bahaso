@@ -21,3 +21,6 @@ Route::get('/pengangguran', [UnemployedController::class, 'index'])->name('penga
 Route::get('/tambahpengangguran', [UnemployedController::class, 'tambahpengangguran'])->name('tambahpengangguran');
 
 Route::post('/insertdata', [UnemployedController::class, 'insertdata'])->name('insertdata');
+
+Route::get('/tampildata/{id}', [UnemployedController::class, 'tampildata'])->name('tampildata');
+Route::post('/editdata/{id}', [UnemployedController::class, 'editdata'])->name('editdata');
