@@ -22,19 +22,20 @@
           <li> <a class="nav1" href="http://127.0.0.1:8000/tambahpengangguran">Templates</a> </li>
           <li> <a class="nav1" href="http://127.0.0.1:8000/tambahpengangguran"> Login </a> </li>
       </ul>
-    </div>
-  <form action="/insertdata" method="POST" enctype="multipart/form-data">
-  @csrf
-    <h1 class="text-center mb-5">Identitas Anda</h1>
-    <div class="container ">
-      <div class="row justify-content-center" >
+  </div>
+
+    <h1 class="text-center mb-5">Tambah data Pengangguran</h1>
+    <div class="container">
+      <div class="row justify-content-center " > 
         <div class="col-8">
-          <div class="card mb-5">
+          <div class="card">
             <div class="card-body">
+              <form action="/insertdata" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
                   <input type="text" name="nama" class="form-control" id="exampleInputEmail1"
-                   aria-describedby="emailHelp">
+                   aria-describedby="emailHelp"> 
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
@@ -42,6 +43,7 @@
                     <option selected>Jenis Kelamin</option>
                     <option value="Pria">Pria</option>
                     <option value="Wanita">Wanita</option>
+                    
                   </select>
                 </div>
                 <div class="mb-3">
@@ -67,12 +69,10 @@
                 <label for="exampleInputEmail1" class="form-label">Kota</label>
                 <input type="text" name="kota" class="form-control" id="exampleInputEmail1"
                  aria-describedby="emailHelp"> 
-                </div>
-                
-                {{-- <a href="/tambahdatapengangguran2" class="btn btn-primary">Berikutny</a> --}}
-                {{-- <a type="submit" href="tambahdatapengangguran2" class="btn btn-primary">Next</a> --}}
+                </div>  
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
             </div>
-            @include('tambahpengangguran2')
           </div>
         </div>
 
@@ -127,7 +127,7 @@
             </div>
 
         </div>
-      </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
