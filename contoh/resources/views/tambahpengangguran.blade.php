@@ -25,7 +25,7 @@
     </div>
   <form action="/insertdata" method="POST" enctype="multipart/form-data">
   @csrf
-    <h1 class="text-center mb-5">Identitas Anda</h1>
+    <h1 class="text-center mb-5">Identitas Data Anda</h1>
     <div class="container ">
       <div class="row justify-content-center" >
         <div class="col-8">
