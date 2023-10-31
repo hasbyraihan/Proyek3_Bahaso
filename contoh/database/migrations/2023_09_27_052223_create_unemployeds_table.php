@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('alamat');
             $table->integer('kodepos');
             $table->string('kota');
+            $table->string('foto')->nullable(); // Kolom foto
+            $table->date('tanggal_lahir')->nullable(); // Kolom tanggal_lahir
             $table->timestamps();
         });
     }

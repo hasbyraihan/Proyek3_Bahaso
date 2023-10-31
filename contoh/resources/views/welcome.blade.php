@@ -1,95 +1,125 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="widht=device-width, initial-scale=1.0">
-        <title>Proyek 3</title>
-        <link rel="stylesheet" href="{{ asset('css/app.css')}}">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <script src="fontawesome/all.js"></script>
-    </head>
+@extends('master')
+@section('konten')
     <body>
-
-        <div class="wrapper">
-            <div class="nav">
-                <div class="logo">
-                    <a href="#">
-                        <p>Ci<span>Vi</span></p>
-                    </a>
-                </div>
-                <ul>
-                    <li> <a class="nav1" href="http://127.0.0.1:8000/tambahpengangguran">Create CV</a> </li>
-                    <li> <a class="nav1" href="http://127.0.0.1:8000/tambahpengangguran">Templates</a> </li>
-                    <li> <a class="nav1" href="http://127.0.0.1:8000/tambahpengangguran"> Login </a> </li>
-                </ul>
-            </div>
-            <div class="header">
-                <h5>Create <span>Profesional</span> CVs 
-                <br> <span>Ease and Creativity</span></h5>
-            </div>
-
-            <div class="content-header">
-                <p> Create Impressive CVs in Minutes!.</p>
-            </div>
-             
-            <div class="abutton">
-                <a href="/tambahpengangguran" class="btn p-3 rounded-7" tabindex="-1" role="button" aria-disabled="true">Create your CV</a>
-            </div>
-        </div>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                <h1 class="m-0">Dashboard</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
-    <div class="footer">
-        <div class="row"> 
-            <div class="footer-col">
-                <h3> Create your resume in a minute,<br> get your dream job in a blink.</h3>
-                <div class="social-media">
-                    <a href="https://www.facebook.com">
-                        <img src="img/Facebook.png" alt="">
-                    </a>
-                    <a href="https://www.instagram.com">
-                        <img src="img/Instagram.png" alt="">
-                    </a>
-                    <a href="https://www.linkedin.com">
-                        <img src="img/LinkedIn.png" alt="">
-                    </a>
-                    <a href="https://www.twitter.com">
-                        <img src="img/Twitter.png" alt="">
-                    </a>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-secondary">
+                    <div class="inner">
+                      <h3>{{$pengangguran->count()}}</h3>
+
+                      <p>Pengangguran</p>
+                    </div>
+                    <div class="small-box-footer"></div> 
+                  </div>
                 </div>
-            </div>
-            <div class="footer-col">
-                    <h4>Terms & Policies </h4>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-            </div>
-            <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-            </div>
-            <div class="footer-col">
-                    <h4>Contact </h4>
-                    <ul>
-                        <li><a href="#">090932</a></li>
-                        <li><a href="#">hasby608@gmail.com</a></li>
-                    </ul>
-            </div>
-            <div class="garis">
-                <hr style=" width:1170px; margin-top: 80px; margin-left: 130px; color:#FFFFFF;">
-            </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-secondary">
+                    <div class="inner">
+                      <h3>{{$pendidikan->count()}}</h3>
 
-            <div class="copyright">
-                <h6>Copyright, CiVi 2023. All rights reserved.</h6>
-            </div>
+                      <p>Riwayat Pendidikan</p>
+                    </div>
+                    <div class="small-box-footer"></div> 
+                  </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-secondary">
+                    <div class="inner">
+                      <h3>{{$portofolio->count()}}</h3>
 
+                      <p>Portofolio</p>
+                    </div>
+                    <div class="small-box-footer"></div> 
+                  </div>
+                </div>
+                <!-- ./col -->
+              </div>
+              <!-- /.row -->
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header border-transparent">
+                          <h3 class="card-title">Pembayaran</h3>
+
+                          <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                              <i class="fas fa-times"></i>
+                            </button>
+                          </div>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                          <div class="table-responsive">
+                            <table class="table m-0">
+                              <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">foto</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Jenis Kelamin</th>
+                                <th scope="col">Nomor Telepon</th>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">Alamat</th>
+                                <th scope="col">Kota</th>
+                                <th scope="col">Kode Pos</th>
+                                <th scope="col">Dibuat</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              @foreach ($pengangguran as $row)
+                            <tr>
+                                <td>{{ ++$i}}</td>
+                                <td><img src="{{ asset('uploads/foto/' . $row->foto) }}" width="100" alt=""></td>
+                                <td>{{ $row->nama }}</td>
+                                <td>{{ $row->jenkel }}</td>
+                                <td>{{ $row->notelp }}</td>
+                                <td>{{ $row->email }}</td>
+                                <td>{{ $row->alamat }}</td>
+                                <td>{{ $row->kodepos }}</td>
+                                <td>{{ $row->kota }}</td>
+                                <td>{{ $row->created_at->format("D M Y") }}</td>
+                            </tr>
+                            @endforeach
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                          <span class="float-left"></span>
+                          <a href="pengangguran" class="btn btn-sm btn-secondary float-right">Lihat Semua Pengangguran</a>
+                        </div>
+                        <!-- /.card-footer -->
+                      </div>
+                      <!-- /.card -->
+                </div>
+              </div>
         </div>
-    </div>
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </body>
-</html>
+    </section>
+@endsection

@@ -1,138 +1,162 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('master')
+@section('konten')
+<body>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
-    <title>Data Pengangguran</title>
-  </head>
-  <body>
-    <div class="nav">
-      <div class="logo">
-          <a href="#">
-              <p>Ci<span>Vi</span></p>
-          </a>
-      </div>
-      <ul>
-          <li> <a class="nav1" href="http://127.0.0.1:8000/tambahpengangguran">Create CV</a> </li>
-          <li> <a class="nav1" href="http://127.0.0.1:8000/tambahpengangguran">Templates</a> </li>
-          <li> <a class="nav1" href="http://127.0.0.1:8000/tambahpengangguran"> Login </a> </li>
-      </ul>
-    </div>
-  <form action="/insertdata" method="POST" enctype="multipart/form-data">
-  @csrf
-    <h1 class="text-center mb-5">Identitas Anda</h1>
-    <div class="container ">
-      <div class="row justify-content-center" >
-        <div class="col-8">
-          <div class="card mb-5">
-            <div class="card-body">
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
-                  <input type="text" name="nama" class="form-control" id="exampleInputEmail1"
-                   aria-describedby="emailHelp">
+<div class="container mt-5">
+    <br>
+    <h2 class="mb-4">Tambah Pengangguran</h2>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            Terdapat beberapa kesalahan input. Silakan periksa dan coba lagi.
+        </div>
+    @endif
+
+    <form action="{{ route('insertdata') }}" method="post" enctype="multipart/form-data">
+        @csrf
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama" name="nama" value="{{ $data->nama ?? old('nama') }}" placeholder="Nama Lengkap">
+                    @error('nama')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
-                  <select class="form-select" name="jenkel" aria-label="Default select example">
-                    <option selected>Jenis Kelamin</option>
-                    <option value="Pria">Pria</option>
-                    <option value="Wanita">Wanita</option>
-                  </select>
+
+                <div class="form-group">
+                    <label for="jenkel">Jenis Kelamin</label>
+                    <select class="form-control" id="jenkel" name="jenkel">
+                        <option value="Pria" {{ ($data->jenkel ?? old('jenkel')) == 'Pria' ? 'selected' : '' }}>Pria</option>
+                        <option value="Wanita" {{ ($data->jenkel ?? old('jenkel')) == 'Wanita' ? 'selected' : '' }}>Wanita</option>
+                    </select>
+                    @error('jenkel')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">No Telepon</label>
-                  <input type="number" name="notelp" class="form-control" id="exampleInputEmail1"
-                   aria-describedby="emailHelp"> 
+
+                <div class="form-group">
+                    <label for="tanggal_lahir">Tanggal Lahir</label>
+                    <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $data->tanggal_lahir ?? old('tanggal_lahir') }}">
+                    @error('tanggal_lahir')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email </label>
-                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <textarea class="form-control" id="alamat" name="alamat">{{ $data->alamat ?? old('alamat') }}</textarea>
+                    @error('alamat')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Alamat</label>
-                  <input type="text" name="alamat" class="form-control" id="exampleInputEmail1"
-                   aria-describedby="emailHelp"> 
+
+                <div class="form-group">
+                    <label for="kota">Kota</label>
+                    <input type="text" class="form-control" id="kota" name="kota" value="{{ $data->kota ?? old('kota') }}" placeholder="Kota">
+                    @error('kota')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Kode Pos</label>
-                  <input type="number" name="kodepos" class="form-control" id="exampleInputEmail1"
-                   aria-describedby="emailHelp"> 
+
+                <div class="form-group">
+                    <label for="kodepos">Kode Pos</label>
+                    <input type="text" class="form-control" id="kodepos" name="kodepos" value="{{ $data->kodepos ?? old('kodepos') }}" placeholder="Kode Pos">
+                    @error('kodepos')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                <label for="exampleInputEmail1" class="form-label">Kota</label>
-                <input type="text" name="kota" class="form-control" id="exampleInputEmail1"
-                 aria-describedby="emailHelp"> 
+
+                <div class="form-group">
+                    <label for="notelp">Nomor Telepon</label>
+                    <input type="text" class="form-control" id="notelp" name="notelp" value="{{ $data->notelp ?? old('notelp') }}" placeholder="Nomor Telepon">
+                    @error('notelp')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
-                
-                {{-- <a href="/tambahdatapengangguran2" class="btn btn-primary">Berikutny</a> --}}
-                {{-- <a type="submit" href="tambahdatapengangguran2" class="btn btn-primary">Next</a> --}}
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ $data->email ?? old('email') }}" placeholder="Email">
+                    @error('email')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
             </div>
-            @include('tambahpengangguran2')
-          </div>
+
+            <div class="col-md-6">
+                <div class="form-group text-center">
+                    <label for="foto" style="width: 100%;">
+                        <div style="border: 2px dashed #ccc; padding: 10px;">
+                            <img src="#" id="preview" style="max-width: 100%; max-height: 300px; margin-bottom: 10px;" />
+                            Tambahkan Foto
+                        </div>
+                    </label>
+                    <input type="file" class="form-control" id="foto" name="foto" style="display: none;">
+                    @error('foto')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+            </div>
         </div>
 
-      </div>
-      <div class="footer">
-        <div class="row"> 
-            <div class="footer-col">
-                <h3> Create your resume in a minute,<br> get your dream job in a blink.</h3>
-                <div class="social-media">
-                    <a href="https://www.facebook.com">
-                        <img src="img/Facebook.png" alt="">
-                    </a>
-                    <a href="https://www.instagram.com">
-                        <img src="img/Instagram.png" alt="">
-                    </a>
-                    <a href="https://www.linkedin.com">
-                        <img src="img/LinkedIn.png" alt="">
-                    </a>
-                    <a href="https://www.twitter.com">
-                        <img src="img/Twitter.png" alt="">
-                    </a>
-                </div>
-            </div>
-            <div class="footer-col">
-                    <h4>Terms & Policies </h4>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-            </div>
-            <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-            </div>
-            <div class="footer-col">
-                    <h4>Contact </h4>
-                    <ul>
-                        <li><a href="#">090932</a></li>
-                        <li><a href="#">hasby608@gmail.com</a></li>
-                    </ul>
-            </div>
-            <div class="garis">
-                <hr style=" width:1170px; margin-top: 80px; margin-left: 130px; color:#FFFFFF;">
-            </div>
+        <button type="submit" class="btn btn-primary">Next</button>
+    </form>
 
-            <div class="copyright">
-                <h6>Copyright, CiVi 2023. All rights reserved.</h6>
-            </div>
+    <a type="submit" href="/pengangguran" class="btn btn-secondary mt-3" style="margin-bottom:10px">Prev</a>
 
-        </div>
-      </div>
+</div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Jika form berhasil disubmit
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('#formTambahPengangguran'); // Menggunakan ID "formTambahPengangguran"
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Menghentikan form dari pengiriman otomatis
+
+            // Ambil data dari form
+            const formData = new FormData(form);
+
+            // Kirim data ke server menggunakan AJAX
+            $.ajax({
+                url: "{{ route('insertdata') }}", // Ganti sesuai dengan rute Anda
+                method: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    // Handle respons dari server, jika diperlukan
+                    // Misalnya, Anda dapat menampilkan pesan sukses atau pengalihkan pengguna
+                    window.location.href = "{{ route('riwayat-pendidikan') }}";
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    // Handle error jika terjadi kesalahan
+                    console.error(xhr.responseText);
+                    alert('Terjadi kesalahan saat menyimpan data.');
+                }
+            });
+        });
+
+        // Tampilkan preview gambar saat dipilih
+        document.querySelector('#foto').addEventListener('change', function() {
+            const preview = document.querySelector('#preview');
+            const file = this.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    });
+</script>
+
+</body>
+@endsection

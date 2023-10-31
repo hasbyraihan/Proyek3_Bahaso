@@ -1,8 +1,15 @@
 <?php
 
+use App\Http\Controllers\DaftarController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnemployedController;
+use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\RiwayatPendidikanController;
+
+
 /*
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -14,15 +21,47 @@ use App\Http\Controllers\UnemployedController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login_aja');
 });
-Route::get('/pengangguran', [UnemployedController::class, 'index'])->name('pengangguran');
 
-Route::get('/tambahpengangguran', [UnemployedController::class, 'tambahpengangguran'])->name('tambahpengangguran');
+Route::get('/login_aja', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::post('/insertdata', [UnemployedController::class, 'insertdata'])->name('insertdata');
+Route::get('/register', function (){
+    return view('register');
+});
+Route::post('/register_store',[DaftarController::class, 'store_users']);
 
-Route::get('/tampildata/{id}', [UnemployedController::class, 'tampildata'])->name('tampildata');
-Route::post('/editdata/{id}', [UnemployedController::class, 'editdata'])->name('editdata');
+Route::get('/master', function(){
+    return view('master');
+});
 
-Route::get('/delete/{id}', [UnemployedController::class, 'destroy'])->name('destroy');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboard', [UnemployedController::class, 'dashboard'])->name('dashboard');
+    Route::get('/pengangguran', [UnemployedController::class, 'index'])->name('pengangguran');
+    
+    Route::get('/tambahpengangguran', [UnemployedController::class, 'tambahpengangguran'])->name('tambahpengangguran');
+    
+    Route::post('/insertdata', [UnemployedController::class, 'insertdata'])->name('insertdata');
+    
+    Route::get('/tampildata/{id}', [UnemployedController::class, 'tampildata'])->name('tampildata');
+    Route::post('/editdata/{id}', [UnemployedController::class, 'editdata'])->name('editdata');
+    
+    Route::get('/delete/{id}', [UnemployedController::class, 'destroy'])->name('destroy');
+    
+    
+    // Rute untuk Portofolio
+    Route::get('/create_portofolio', [PortofolioController::class, 'create'])->name('portofolio.create');
+    Route::post('/portofolio/tambah', [PortofolioController::class, 'store'])->name('portofolio.tambah');
+    
+    
+    
+    // Hanya menampilkan form untuk menambah riwayat pendidikan
+    Route::get('/riwayat-pendidikan', [RiwayatPendidikanController::class, 'create'])->name('riwayat-pendidikan');
+    
+    // Menyimpan data dari form ke database
+    Route::post('/riwayat-pendidikan/store', [RiwayatPendidikanController::class, 'store'])->name('riwayat-pendidikan.store');
+    Route::get('/riwayatpendidikan', [RiwayatPendidikanController::class, 'store'])->name('riwayatpendidikan');    
+});
+

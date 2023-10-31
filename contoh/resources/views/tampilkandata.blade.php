@@ -19,6 +19,9 @@
             <div class="card-body">
               <form action="/editdata/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @if($data->foto)
+               <img src="{{ asset('uploads/foto/' . $data->foto) }}" alt="Foto Pengangguran" width="150">
+                @endif
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
                   <input type="text" name="nama" class="form-control" id="exampleInputEmail1"
@@ -26,11 +29,10 @@
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
-                  <select class="form-select" name="jenkel" aria-label="Default select example">
-                    <option selected>{{$data->jenkel}}</option>
+                  <select class="form-control" name="jenkel" aria-label="Default select example">
+                    <option hidden>{{$data->jenkel}}</option>
                     <option value="Pria">Pria</option>
                     <option value="Wanita">Wanita</option>
-                    
                   </select>
                 </div>
                 <div class="mb-3">

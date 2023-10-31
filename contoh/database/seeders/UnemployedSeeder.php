@@ -16,7 +16,6 @@ class UnemployedSeeder extends Seeder
     public function run(): void
     {
         DB::table('unemployeds')->insert([
-            'id' => 1,
             'nama' => 'Sigit Susanto',
             'jenkel' => 'Pria',
             'notelp' => 40818456321,
@@ -24,11 +23,6 @@ class UnemployedSeeder extends Seeder
             'alamat' => Str::random(20),
             'kodepos' => 81646,
             'kota' => 'Bandung',
-            'profile' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet rhoncus libero. Nunc cursus rhoncus mi',
-            'skill' => 'Web Design',
-            'technical' => 'CSS',
-            'experience' => 'Facebook as CEO',
-            'education' => 'Indiana University - Bloomington, Indiana',
         ]);
     }
 }

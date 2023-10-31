@@ -21,17 +21,23 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'nama_users',
+        'level'
     ];
+
+    protected $primaryKey = 'id_users';
+    protected $table = 'users';
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // protected $hidden = [
+    //     'password',
+    //     'remember_token',
+    // ];
 
     /**
      * The attributes that should be cast.
@@ -40,6 +46,5 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
 }
