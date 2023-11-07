@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('id_pengguna');
             $table->foreignId('id_datadiri')->references('id')->on('unemployeds');
             $table->foreignId('id_pendidikan')->references('id')->on('riwayat_pendidikan');
+            $table->foreignId('id_skill')->references('id')->on('skill');
+            $table->foreignId('id_pekerjaan')->references('id')->on('riwayatkerja');
             $table->foreignId('id_portofolio')->references('id')->on('portofolio');
             $table->foreignId('users_id')->references('id_users')->on('users');
         });

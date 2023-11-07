@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Unemployed;
 use App\Models\RiwayatPendidikan;
+use App\Models\riwayatkerja;
 use App\Models\Portofolio;
 use Illuminate\Http\Request;
 
@@ -60,9 +61,10 @@ class UnemployedController extends Controller
     function dashboard(){
         $pengangguran = Unemployed::paginate(5);
         $pendidikan = RiwayatPendidikan::all();
+        $pekerjaan = riwayatkerja::all();
         $portofolio = Portofolio::all();
 
-        return view('welcome',['pengangguran'=>$pengangguran, 'pendidikan'=>$pendidikan, 'portofolio'=>$portofolio])
+        return view('welcome',['pengangguran'=>$pengangguran, 'pendidikan'=>$pendidikan, 'pekerjaan'=>$pekerjaan, 'portofolio'=>$portofolio])
         ->with('i',(request()->input('page',1)-1));
     }
     

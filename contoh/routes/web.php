@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnemployedController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\RiwayatPendidikanController;
+use App\Http\Controllers\RiwayatkerjaController;
+use App\Http\Controllers\SkillController;
 
 
 /*
@@ -62,6 +64,20 @@ Route::middleware(['auth'])->group(function(){
     
     // Menyimpan data dari form ke database
     Route::post('/riwayat-pendidikan/store', [RiwayatPendidikanController::class, 'store'])->name('riwayat-pendidikan.store');
-    Route::get('/riwayatpendidikan', [RiwayatPendidikanController::class, 'store'])->name('riwayatpendidikan');    
+    Route::get('/riwayatpendidikan', [RiwayatPendidikanController::class, 'store'])->name('riwayatpendidikan');
+
+    // Hanya menampilkan form untuk menambah riwayat pekerjaan
+    Route::get('/riwayat-pekerjaan', [RiwayatkerjaController::class, 'create'])->name('riwayat-pekerjaan');
+    
+    // Menyimpan data dari form ke database
+    Route::post('/riwayat-pekerjaan/store', [RiwayatkerjaController::class, 'store'])->name('riwayat-pekerjaan.store');
+    Route::get('/riwayatpekerjaan', [RiwayatkerjaController::class, 'store'])->name('riwayatpekerjaan');
+
+        // Hanya menampilkan form untuk menambah riwayat pekerjaan
+        Route::get('/skill', [SkillController::class, 'create'])->name('skill');
+    
+        // Menyimpan data dari form ke database
+        Route::post('/skill/store', [SkillController::class, 'store'])->name('skill.store');
+        Route::get('/skills', [SkillController::class, 'store'])->name('skills');
 });
 

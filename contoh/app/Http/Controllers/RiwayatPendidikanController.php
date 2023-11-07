@@ -30,7 +30,7 @@ class RiwayatPendidikanController extends Controller
         RiwayatPendidikan::create($request->all());
     
         // Redirect ke halaman lain atau kembali ke form dengan pesan sukses
-        return redirect()->route('portofolio.create')->with('success', 'Data berhasil ditambah');
+        return redirect()->route('riwayat-pekerjaan')->with('success', 'Data berhasil ditambah');
     }
     
 }
