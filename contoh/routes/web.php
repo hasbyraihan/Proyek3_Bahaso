@@ -23,7 +23,7 @@ use App\Http\Controllers\SkillController;
 */
 
 Route::get('/', function () {
-    return redirect('/login_aja');
+    return view('/landing');
 });
 
 Route::get('/login_aja', [LoginController::class, 'index'])->middleware('guest')->name('login');
