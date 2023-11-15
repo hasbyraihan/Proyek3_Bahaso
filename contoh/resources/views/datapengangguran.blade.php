@@ -10,6 +10,7 @@
         <h1 class="text-center mb-5">Data Pengangguran</h1>
         <a href="/tambahpengangguran" class="btn btn-success mb-3">Tambah</a>
         <a href="/dashboard" class="btn btn-danger mb-3">Kembali</a>
+        <a href="/exportpdf" class="btn btn-outline-info">PDF</a>
         <table class="table" id="dataTable">
             <thead>
                 <tr>

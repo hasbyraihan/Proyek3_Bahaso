@@ -37,7 +37,7 @@
             <div class="abutton">
                 <a href="/tambahpengangguran" class="btn p-3 rounded-7" tabindex="-1" role="button" aria-disabled="true">Create your CV</a>
             </div>
-
+     
         </div>
 
 
@@ -173,6 +173,8 @@
                             <li><a href="#">090932</a></li>
                             <li><a href="#">hasby608@gmail.com</a></li>
                         </ul>
+                               
+                
                 </div>
                 <div class="garis">
                     <hr style=" width:1170px; margin-top: 80px; margin-left: 130px; color:#FFFFFF;">

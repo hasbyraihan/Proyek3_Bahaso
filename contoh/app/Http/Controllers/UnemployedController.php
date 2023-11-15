@@ -6,6 +6,7 @@ use App\Models\Unemployed;
 use App\Models\RiwayatPendidikan;
 use App\Models\riwayatkerja;
 use App\Models\Portofolio;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 
@@ -15,6 +16,16 @@ class UnemployedController extends Controller
         $data = Unemployed::all();
         return view('datapengangguran', compact('data'))->with('i',(request()->input('page',1)-1));
     }
+
+    public function exportpdf(){
+        $data = Unemployed::all();
+
+        view()->share('data', $data);
+        $pdf = Pdf::loadView('data-pdf');
+        return $pdf->download("coba.pdf");
+    }
+    
+
     public function tambahpengangguran(){
         return view('tambahpengangguran');
     } 
