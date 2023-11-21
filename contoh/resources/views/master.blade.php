@@ -8,18 +8,18 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ url('') }}/plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="{{ url('') }}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ url('') }}/dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="bg-ryanda.png" alt="AdminLTELogo" height="300" width="300">
+    <img class="animation__wobble" src="{{ url('') }}/bg-ryanda.png" alt="AdminLTELogo" height="300" width="300">
   </div>
 
   <!-- Navbar -->
@@ -55,7 +55,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link" style="cursor:none;">
-        <img src="bg-ryanda.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8" height="300" width="300">
+        <img src="{{ url('') }}/bg-ryanda.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8" height="300" width="300">
       <span class="brand-text font-weight-light">CiVi</span>
     </a>
 
@@ -64,7 +64,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/avatar2.png" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ url('') }}/dist/img/avatar2.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ auth()->user()->nama_users }}</a>
@@ -89,6 +89,30 @@
               <i class="nav-icon far fa-image"></i>
               <p>
                 Pengangguran
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ Request::is('') ? 'active' : ''}}">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Riwayat Pendidikan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ Request::is('') ? 'active' : ''}}">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Riwayat Pekerjaan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/skill" class="nav-link {{ Request::is('skill') ? 'active' : ''}}">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Skill
               </p>
             </a>
           </li>
@@ -124,21 +148,21 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="{{ url('') }}/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url('') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{ url('') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="{{ url('') }}/dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="{{ url('') }}/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="{{ url('') }}/plugins/raphael/raphael.min.js"></script>
+<script src="{{ url('') }}/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="{{ url('') }}/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="{{ url('') }}/plugins/chart.js/Chart.min.js"></script>
 </body>
 </html>

@@ -78,6 +78,10 @@ class UnemployedController extends Controller
         return view('welcome',['pengangguran'=>$pengangguran, 'pendidikan'=>$pendidikan, 'pekerjaan'=>$pekerjaan, 'portofolio'=>$portofolio])
         ->with('i',(request()->input('page',1)-1));
     }
-    
+
+    // public function selectId(){
+    //     $data = Unemployed::all();
+    //     return view('pilihId', compact('data'))->with('i',(request()->input('page',1)-1));
+    // }
 }
 

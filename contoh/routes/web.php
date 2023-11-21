@@ -23,7 +23,7 @@ use App\Http\Controllers\SkillController;
 */
 
 Route::get('/', function () {
-    return view('/landing');
+    return redirect('/login_aja');
 });
 
 Route::get('/login_aja', [LoginController::class, 'index'])->middleware('guest')->name('login');
@@ -44,7 +44,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/pengangguran', [UnemployedController::class, 'index'])->name('pengangguran');
     
     Route::get('/tambahpengangguran', [UnemployedController::class, 'tambahpengangguran'])->name('tambahpengangguran');
-    Route::get('/exportpdf', [UnemployedController::class, 'exportpdf'])->name('exportpdf');
     
     Route::post('/insertdata', [UnemployedController::class, 'insertdata'])->name('insertdata');
     
@@ -75,10 +74,15 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/riwayatpekerjaan', [RiwayatkerjaController::class, 'store'])->name('riwayatpekerjaan');
 
         // Hanya menampilkan form untuk menambah riwayat pekerjaan
-        Route::get('/skill', [SkillController::class, 'create'])->name('skill');
-    
-        // Menyimpan data dari form ke database
-        Route::post('/skill/store', [SkillController::class, 'store'])->name('skill.store');
-        Route::get('/skills', [SkillController::class, 'store'])->name('skills');
+    Route::get('/tambahskill', [SkillController::class, 'create'])->name('skill');
+
+    // Menyimpan data dari form ke database
+    Route::post('/skill/store', [SkillController::class, 'store'])->name('skill.store');
+    // Route::get('/skills', [SkillController::class, 'store'])->name('skills');
+
+    Route::get('/skill', [SkillController::class, 'index'])->name('skill');
+    Route::get('/pilihIdSkill', [UnemployedController::class, 'selectId'])->name('skill.selectId');
+
+    // Route::get('/skill', [SkillController::class, 'index'])->name('skill');
 });
 
