@@ -93,7 +93,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link {{ Request::is('') ? 'active' : ''}}">
+            <a href="/riwayatpendidikan" class="nav-link {{ Request::is('riwayatpendidikan') ? 'active' : ''}}">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Riwayat Pendidikan
@@ -101,7 +101,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link {{ Request::is('') ? 'active' : ''}}">
+            <a href="/pekerjaan" class="nav-link {{ Request::is('pekerjaan') ? 'active' : ''}}">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Riwayat Pekerjaan

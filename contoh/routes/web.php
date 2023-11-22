@@ -23,7 +23,7 @@ use App\Http\Controllers\SkillController;
 */
 
 Route::get('/', function () {
-    return view('/landing');
+    return redirect('/login_aja');
 });
 
 Route::get('/login_aja', [LoginController::class, 'index'])->middleware('guest')->name('login');
@@ -44,7 +44,6 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/pengangguran', [UnemployedController::class, 'index'])->name('pengangguran');
     
     Route::get('/tambahpengangguran', [UnemployedController::class, 'tambahpengangguran'])->name('tambahpengangguran');
-    Route::get('/exportpdf', [UnemployedController::class, 'exportpdf'])->name('exportpdf');
     
     Route::post('/insertdata', [UnemployedController::class, 'insertdata'])->name('insertdata');
     
@@ -69,12 +68,19 @@ Route::middleware(['auth'])->group(function(){
 
     // Hanya menampilkan form untuk menambah riwayat pekerjaan
     Route::get('/riwayat-pekerjaan', [RiwayatkerjaController::class, 'create'])->name('riwayat-pekerjaan');
-    
+
     // Menyimpan data dari form ke database
     Route::post('/riwayat-pekerjaan/store', [RiwayatkerjaController::class, 'store'])->name('riwayat-pekerjaan.store');
-    Route::get('/riwayatpekerjaan', [RiwayatkerjaController::class, 'store'])->name('riwayatpekerjaan');
 
-        // Hanya menampilkan form untuk menambah riwayat pekerjaan
+    Route::get('/pekerjaan', [RiwayatkerjaController::class, 'index'])->name('pekerjaan');
+    Route::get('/pilihIdkerja', [RiwayatkerjaController::class, 'selectId'])->name('kerja.selectId');
+
+    Route::get('/tampilkerja/{id}', [RiwayatkerjaController::class, 'tampilkerja'])->name('tampilkerja');
+    Route::post('/editkerja/{id}', [RiwayatkerjaController::class, 'editkerja'])->name('editkerja');
+    
+    Route::get('/delete/{id}', [RiwayatkerjaController::class, 'destroy'])->name('destroy');
+
+    // Hanya menampilkan form untuk menambah riwayat pekerjaan
     Route::get('/tambahskill', [SkillController::class, 'create'])->name('skill');
 
     // Menyimpan data dari form ke database
@@ -82,7 +88,8 @@ Route::middleware(['auth'])->group(function(){
     // Route::get('/skills', [SkillController::class, 'store'])->name('skills');
 
     Route::get('/skill', [SkillController::class, 'index'])->name('skill');
-    Route::get('/pilihIdSkill', [UnemployedController::class, 'selectId'])->name('skill.selectId');
+    Route::get('/pilihIdSkill', [SkillController::class, 'selectId'])->name('skill.selectId');
+    Route::get('/deleteskill/{id}', [SkillController::class, 'destroy'])->name('destroy');
 
     // Route::get('/skill', [SkillController::class, 'index'])->name('skill');
 });

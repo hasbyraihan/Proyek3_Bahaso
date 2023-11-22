@@ -12,7 +12,36 @@ class RiwayatkerjaController extends Controller
     {
         return view('riwayatpekerjaan');
     }
-    
+
+    public function index(){
+        $data = riwayatkerja::all();
+        return view('dataPekerjaan', compact('data'))->with('i',(request()->input('page',1)-1));
+    }
+
+    public function selectId(){
+        // $data = Unemployed::all();
+        return view('riwayatpekerjaan.selectId');
+    }
+
+    public function tampilkerja($id){
+
+        $data = riwayatkerja::find($id);
+        return view('riwayatpekerjaan', compact('data'));
+    }
+
+    public function editkerja(Request $request, $id){
+        $data = riwayatkerja::find($id);
+        $data->update($request->all());
+
+        return redirect()->route('pekerjaan')->with('success', 'Data berhasil di update');
+    }
+
+    public function destroy($id){
+        riwayatkerja::where('id',$id)->delete();
+        alert('Hapus Data','Data Berhasil Dihapus', 'success');
+        return redirect()->route('pekerjaan');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -36,7 +65,7 @@ class RiwayatkerjaController extends Controller
         riwayatkerja::create($request->all());
     
         // Redirect ke halaman lain atau kembali ke form dengan pesan sukses
-        return redirect()->route('skill')->with('success', 'Data berhasil ditambah');
+        return redirect()->route('pekerjaan')->with('success', 'Data berhasil ditambah');
     }
     
 }
