@@ -1,43 +1,110 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  </head>
-  <body>
-    <h4 class="text-center">DATA PENGANGGURAN NIC</h4>
-    <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">Nomor Telepon</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">Kota</th>
-                    <th scope="col">Kode Pos</th>
-                    <th scope="col">Dibuat</th>>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($data as $row)
-                <tr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ats CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
-                    <td>{{ $row->nama }}</td>
-                    <td>{{ $row->jenkel }}</td>
-                    <td>{{ $row->notelp }}</td>
-                    <td>{{ $row->email }}</td>
-                    <td>{{ $row->alamat }}</td>
-                    <td>{{ $row->kodepos }}</td>
-                    <td>{{ $row->kota }}</td>
-                    <td>{{ $row->created_at->format("D M Y") }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-            
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    @foreach ($data as $row)
+        <header>
+            <h1>{{ $row->nama }}'s CV</h1>
+            <p>Email: {{ $row->email }} | Phone: 0{{ $row->notelp }} | Address: {{ $row->alamat }}</p>
+        </header>
+
+        <section>
+          <h2>Description</h2>
+          <p>{{ $row->description }}</p>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Degree</th>
+                        <th>University</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bachelor's in Computer Science</td>
+                        <td>University of XYZ</td>
+                        <td>Year of Graduation</td>
+                    </tr>
+                    <!-- Add more education entries as needed -->
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Work Experience</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Company</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Software Developer</td>
+                        <td>ABC Tech Solutions</td>
+                        <td>2018 - Present</td>
+                    </tr>
+                    <!-- Add more work experience entries as needed -->
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <ul>
+                <li>Programming Languages: PHP, JavaScript, etc.</li>
+                <li>Web Technologies: HTML, CSS, etc.</li>
+                <!-- Add more skills as needed -->
+            </ul>
+        </section>
+
+        <!-- Add more sections for projects, certifications, etc. -->
+
+    @endforeach
+
+</body>
 </html>
