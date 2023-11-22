@@ -12,7 +12,6 @@ class SkillController extends Controller
     public function create()
     {
         // $skill = Skill::findOrFail($id);
-
         return view('skill');
     }
     
@@ -39,13 +38,13 @@ class SkillController extends Controller
     
         // Jika validasi berhasil, simpan data ke database
         skill::create([
-            // 'id_user'=> 1,
+            'id_user'=> 1,
             'level'=> $request->input('level'),
             'namaskill'=> $request->input('namaskill'),
         ]);
     
         // Redirect ke halaman lain atau kembali ke form dengan pesan sukses
-        return redirect()->route('portofolio.create')->with('success', 'Data berhasil ditambah');
+        return redirect()->route('skill')->with('success', 'Data berhasil ditambah');
     }
     
 }

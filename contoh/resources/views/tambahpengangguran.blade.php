@@ -4,7 +4,16 @@
 
 <div class="container mt-5">
     <br>
-    <h2 class="mb-4">Tambah Pengangguran</h2>
+    {{-- <h2 class="mb-4">Tambah Pengangguran</h2> --}}
+
+    @if(isset($data))
+        <h2 class="mb-4">Edit Pengangguran</h2>
+        <form action="{{ route('editdata', $data->id) }}" method="post" enctype="multipart/form-data">
+        @method('POST') {{-- Use PUT method for updating data --}}
+    @else
+        <h2 class="mb-4">Tambah Pengangguran</h2>
+        <form action="{{ route('insertdata') }}" method="post" enctype="multipart/form-data">
+    @endif
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -12,7 +21,7 @@
         </div>
     @endif
 
-    <form action="{{ route('insertdata') }}" method="post" enctype="multipart/form-data">
+    {{-- <form action="{{ route('insertdata') }}" method="post" enctype="multipart/form-data"> --}}
         @csrf
 
         <div class="row">

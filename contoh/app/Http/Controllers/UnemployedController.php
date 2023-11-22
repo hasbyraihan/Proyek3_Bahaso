@@ -28,7 +28,7 @@ class UnemployedController extends Controller
 
     public function tambahpengangguran(){
         return view('tambahpengangguran');
-    } 
+    }
 
     public function insertdata(Request $request){
         $validatedData = $request->validate([ 
@@ -55,7 +55,7 @@ class UnemployedController extends Controller
     public function tampildata($id){
 
         $data = Unemployed::find($id);
-        return view('tampilkandata', compact('data'));
+        return view('tambahpengangguran', compact('data'));
     }
     public function editdata(Request $request, $id){
         $data = Unemployed::find($id);
