@@ -36,9 +36,16 @@ class RiwayatkerjaController extends Controller
         return redirect()->route('pekerjaan')->with('success', 'Data berhasil di update');
     }
 
-    public function deletekerja($id){
-        riwayatkerja::where('id',$id)->delete();
-        alert('Hapus Data','Data Berhasil Dihapus', 'success');
+    // public function deletekerja($id){
+    //     riwayatkerja::where('id',$id)->delete();
+    //     alert('Hapus Data','Data Berhasil Dihapus', 'success');
+    //     return redirect()->route('pekerjaan');
+    // }
+
+    public function deletekerja($id)
+    {
+        $data = riwayatkerja::find($id);
+        $data->delete();
         return redirect()->route('pekerjaan');
     }
 

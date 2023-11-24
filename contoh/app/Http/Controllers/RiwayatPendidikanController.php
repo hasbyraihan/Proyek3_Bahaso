@@ -35,9 +35,16 @@ class RiwayatPendidikanController extends Controller
         return redirect()->route('pendidikan')->with('success', 'Data berhasil di update');
     }
 
-    public function deletependidikan($id){
-        RiwayatPendidikan::where('id',$id)->delete();
-        alert('Hapus Data','Data Berhasil Dihapus', 'success');
+    // public function deletependidikan($id){
+    //     RiwayatPendidikan::where('id',$id)->delete();
+    //     alert('Hapus Data','Data Berhasil Dihapus', 'success');
+    //     return redirect()->route('pendidikan');
+    // }
+
+    public function deletependidikan($id)
+    {
+        $data = RiwayatPendidikan::find($id);
+        $data->delete();
         return redirect()->route('pendidikan');
     }
 

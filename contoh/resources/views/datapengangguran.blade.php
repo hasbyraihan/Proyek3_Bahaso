@@ -43,9 +43,7 @@
                     <td style="display: flex; justify-content: space-between;">
                         <a href="/tampildata/{{ $row->id }}" class="btn btn-primary">Edit</a>
                         <!-- <a href="/delete/{{ $row->id }}" class="btn btn-danger" style="margin-left:10px;">Delete</a> -->
-                        <button type="button" class="btn btn-danger" data-toggle="modal" style="margin-left:10px;" data-target="#Delete{{$row->id}}">
-                        Delete
-                        </button>
+                        <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach

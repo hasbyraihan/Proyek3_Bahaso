@@ -25,6 +25,13 @@ class SkillController extends Controller
         return view('skill.selectId');
     }
 
+    public function deleteskill($id)
+    {
+        $data = skill::find($id);
+        $data->delete();
+        return redirect()->route('dataSkill');
+    }
+
     public function store(Request $request)
     {
         $request->validate([

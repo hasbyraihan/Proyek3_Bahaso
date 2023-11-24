@@ -33,9 +33,7 @@
                     <td>{{ $row->created_at->format("D M Y") }}</td>
                     <td style="display: flex; justify-content: space-between;">
                         <a href="/tampilpendidikan/{{ $row->id }}" class="btn btn-primary">Edit</a>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" style="margin-left:10px;" data-target="#Delete{{$row->id}}">
-                            Delete
-                        </button>
+                        <a href="/deletependidikan/{{ $row->id }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach
