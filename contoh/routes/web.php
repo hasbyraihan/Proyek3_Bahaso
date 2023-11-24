@@ -23,7 +23,7 @@ use App\Http\Controllers\SkillController;
 */
 
 Route::get('/', function () {
-    return redirect('/login_aja');
+    return view('/landing');
 });
 
 Route::get('/login_aja', [LoginController::class, 'index'])->middleware('guest')->name('login');
@@ -57,15 +57,19 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/create_portofolio', [PortofolioController::class, 'create'])->name('portofolio.create');
     Route::post('/portofolio/tambah', [PortofolioController::class, 'store'])->name('portofolio.tambah');
     
-    
-    
-    // Hanya menampilkan form untuk menambah riwayat pendidikan
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Route::get('/riwayat-pendidikan', [RiwayatPendidikanController::class, 'create'])->name('riwayat-pendidikan');
-    
-    // Menyimpan data dari form ke database
     Route::post('/riwayat-pendidikan/store', [RiwayatPendidikanController::class, 'store'])->name('riwayat-pendidikan.store');
-    Route::get('/riwayatpendidikan', [RiwayatPendidikanController::class, 'store'])->name('riwayatpendidikan');
 
+    Route::get('/pendidikan', [RiwayatPendidikanController::class, 'index'])->name('pendidikan');
+    Route::get('/pilihIdpendidikan', [RiwayatPendidikanController::class, 'selectId'])->name('pendidikan.selectId');
+
+    Route::get('/tampilpendidikan/{id}', [RiwayatPendidikanController::class, 'tampilpendidikan'])->name('tampilpendidikan');
+    Route::post('/editpendidikan/{id}', [RiwayatPendidikanController::class, 'editpendidikan'])->name('editpendidikan');
+    
+    Route::get('/deletependidikan/{id}', [RiwayatPendidikanController::class, 'deletependidikan'])->name('deletependidikan');
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Hanya menampilkan form untuk menambah riwayat pekerjaan
     Route::get('/riwayat-pekerjaan', [RiwayatkerjaController::class, 'create'])->name('riwayat-pekerjaan');
 
@@ -78,7 +82,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/tampilkerja/{id}', [RiwayatkerjaController::class, 'tampilkerja'])->name('tampilkerja');
     Route::post('/editkerja/{id}', [RiwayatkerjaController::class, 'editkerja'])->name('editkerja');
     
-    Route::get('/delete/{id}', [RiwayatkerjaController::class, 'destroy'])->name('destroy');
+    Route::get('/deletekerja/{id}', [RiwayatkerjaController::class, 'deletekerja'])->name('deletekerja');
 
     // Hanya menampilkan form untuk menambah riwayat pekerjaan
     Route::get('/tambahskill', [SkillController::class, 'create'])->name('skill');

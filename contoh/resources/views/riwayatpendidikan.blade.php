@@ -3,7 +3,14 @@
 <body>
     <div class="container mt-5">
         <br>
-        <h2 class="mb-4">Riwayat Pendidikan</h2>
+        @if(isset($data))
+        <h2 class="mb-4">Edit Riwayat Pekerjaan</h2>
+        <form action="{{ route('editpendidikan', $data->id) }}" method="post" enctype="multipart/form-data">
+        @method('POST') {{-- Use PUT method for updating data --}}
+    @else
+        <h2 class="mb-4">Tambah Riwayat Pekerjaan</h2>
+        <form action="{{ route('riwayat-pendidikan.store') }}" method="post" enctype="multipart/form-data">
+    @endif
         @if ($errors->any())
             <div class="alert alert-danger">
                 Terdapat beberapa kesalahan input. Silakan periksa dan coba lagi.

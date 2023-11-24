@@ -7,16 +7,17 @@
     </nav>
 
     <div class="container mt-5">
-        <h1 class="text-center mb-5">Data Skill</h1>
-        <a href="/tambahskill" class="btn btn-success mb-3">Tambah</a>
+        <h1 class="text-center mb-5">Riwayat Pendidikan</h1>
+        <a href="/riwayat-pendidikan" class="btn btn-success mb-3">Tambah</a>
         <a href="/dashboard" class="btn btn-danger mb-3">Kembali</a>
         <table class="table" id="dataTable">
             <thead>
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">ID User</th>
-                    <th scope="col">Nama Skill</th>
-                    <th scope="col">Tingkatan</th>
+                    <th scope="col">Nama Sekolah</th>
+                    <th scope="col">Jurusan</th>
+                    <th scope="col">Tahun Lulus</th>
                     <th scope="col">Dibuat</th>
                     <th scope="col">Aksi</th>
                 </tr>
@@ -25,12 +26,13 @@
                 @foreach ($data as $row)
                 <tr>
                     <td>{{ ++$i}}</td>
-                    <td>{{ $row->id_user }}</td>
-                    <td>{{ $row->namaskill }}</td>
-                    <td>{{ $row->level }}</td>
+                    <td>{{ $row->id }}</td>
+                    <td>{{ $row->sekolah }}</td>
+                    <td>{{ $row->jurusan }}</td>
+                    <td>{{ $row->tahun_lulus }}</td>
                     <td>{{ $row->created_at->format("D M Y") }}</td>
                     <td style="display: flex; justify-content: space-between;">
-                        <a href="/tampildata/{{ $row->id }}" class="btn btn-primary">Edit</a>
+                        <a href="/tampilpendidikan/{{ $row->id }}" class="btn btn-primary">Edit</a>
                         <button type="button" class="btn btn-danger" data-toggle="modal" style="margin-left:10px;" data-target="#Delete{{$row->id}}">
                             Delete
                         </button>
@@ -68,7 +70,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-            <a href="/deletekerja/{{$row->id}}" class="btn btn-primary">Ya</a>>
+            <a href="/delete/{{$row->id}}" class="btn btn-primary">Ya</a>>
         </div>
         </div>
     </div>

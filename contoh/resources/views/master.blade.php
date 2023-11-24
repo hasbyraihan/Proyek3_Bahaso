@@ -93,7 +93,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/riwayatpendidikan" class="nav-link {{ Request::is('riwayatpendidikan') ? 'active' : ''}}">
+            <a href="/pendidikan" class="nav-link {{ Request::is('pendidikan') ? 'active' : ''}}">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Riwayat Pendidikan

@@ -13,6 +13,34 @@ class RiwayatPendidikanController extends Controller
         return view('riwayatpendidikan');
     }
     
+    public function index(){
+        $data = RiwayatPendidikan::all();
+        return view('dataPendidikan', compact('data'))->with('i',(request()->input('page',1)-1));
+    }
+
+    public function selectId(){
+        return view('riwayatpendidikan.selectId');
+    }
+
+    public function tampilpendidikan($id){
+
+        $data = RiwayatPendidikan::find($id);
+        return view('riwayatpendidikan', compact('data'));
+    }
+
+    public function editkpendidikan(Request $request, $id){
+        $data = RiwayatPendidikan::find($id);
+        $data->update($request->all());
+
+        return redirect()->route('pendidikan')->with('success', 'Data berhasil di update');
+    }
+
+    public function deletependidikan($id){
+        RiwayatPendidikan::where('id',$id)->delete();
+        alert('Hapus Data','Data Berhasil Dihapus', 'success');
+        return redirect()->route('pendidikan');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
