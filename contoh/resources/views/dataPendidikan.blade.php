@@ -8,8 +8,8 @@
 
     <div class="container mt-5">
         <h1 class="text-center mb-5">Riwayat Pendidikan</h1>
-        <a href="/riwayat-pendidikan" class="btn btn-success mb-3">Tambah</a>
-        <a href="/dashboard" class="btn btn-danger mb-3">Kembali</a>
+        <a href="/riwayat-pendidikan" class="btn btn-outline-success mb-3">Tambah</a>
+        <a href="/dashboard" class="btn btn-outline-danger mb-3 ml-2">Kembali</a>
         <table class="table" id="dataTable">
             <thead>
                 <tr>
@@ -32,8 +32,8 @@
                     <td>{{ $row->tahun_lulus }}</td>
                     <td>{{ $row->created_at->format("D M Y") }}</td>
                     <td style="display: flex; justify-content: space-between;">
-                        <a href="/tampilpendidikan/{{ $row->id }}" class="btn btn-primary">Edit</a>
-                        <a href="/deletependidikan/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                        <a href="/tampilpendidikan/{{ $row->id }}" class="btn btn-outline-info">Edit</a>
+                        <a href="/deletependidikan/{{ $row->id }}" class="btn btn-outline-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach

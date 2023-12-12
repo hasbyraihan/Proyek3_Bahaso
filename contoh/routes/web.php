@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/pengangguran', [UnemployedController::class, 'index'])->name('pengangguran');
     
     Route::get('/tambahpengangguran', [UnemployedController::class, 'tambahpengangguran'])->name('tambahpengangguran');
+    Route::get('/exportpdf', [UnemployedController::class, 'exportpdf'])->name('exportpdf');
     
     Route::post('/insertdata', [UnemployedController::class, 'insertdata'])->name('insertdata');
     

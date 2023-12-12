@@ -8,8 +8,8 @@
 
     <div class="container mt-5">
         <h1 class="text-center mb-5">Data Skill</h1>
-        <a href="/tambahskill" class="btn btn-success mb-3">Tambah</a>
-        <a href="/dashboard" class="btn btn-danger mb-3">Kembali</a>
+        <a href="/tambahskill" class="btn btn-outline-success mb-3">Tambah</a>
+        <a href="/dashboard" class="btn btn-outline-danger mb-3">Kembali</a>
         <table class="table" id="dataTable">
             <thead>
                 <tr>
@@ -30,8 +30,8 @@
                     <td>{{ $row->level }}</td>
                     <td>{{ $row->created_at->format("D M Y") }}</td>
                     <td style="display: flex; justify-content: space-between;">
-                        <a href="/tampildata/{{ $row->id }}" class="btn btn-primary">Edit</a>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" style="margin-left:10px;" data-target="#Delete{{$row->id}}">
+                        <a href="/tampildata/{{ $row->id }}" class="btn btn-outline-info">Edit</a>
+                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" style="margin-left:10px;" data-target="#Delete{{$row->id}}">
                             Delete
                         </button>
                     </td>
