@@ -28,7 +28,7 @@ class RiwayatPendidikanController extends Controller
         return view('riwayatpendidikan', compact('data'));
     }
 
-    public function editkpendidikan(Request $request, $id){
+    public function editpendidikan(Request $request, $id){
         $data = RiwayatPendidikan::find($id);
         $data->update($request->all());
 
@@ -65,7 +65,7 @@ class RiwayatPendidikanController extends Controller
         RiwayatPendidikan::create($request->all());
     
         // Redirect ke halaman lain atau kembali ke form dengan pesan sukses
-        return redirect()->route('riwayat-pekerjaan')->with('success', 'Data berhasil ditambah');
+        return redirect()->route('pendidikan')->with('success', 'Data berhasil ditambah');
     }
     
 }

@@ -4,11 +4,11 @@
     <div class="container mt-5">
         <br>
         @if(isset($data))
-        <h2 class="mb-4">Edit Riwayat Pekerjaan</h2>
+        <h2 class="mb-4">Edit Riwayat Pendidikan</h2>
         <form action="{{ route('editpendidikan', $data->id) }}" method="post" enctype="multipart/form-data">
         @method('POST') {{-- Use PUT method for updating data --}}
     @else
-        <h2 class="mb-4">Tambah Riwayat Pekerjaan</h2>
+        <h2 class="mb-4">Tambah Riwayat Pendidikan</h2>
         <form action="{{ route('riwayat-pendidikan.store') }}" method="post" enctype="multipart/form-data">
     @endif
         @if ($errors->any())
@@ -16,11 +16,11 @@
                 Terdapat beberapa kesalahan input. Silakan periksa dan coba lagi.
             </div>
         @endif
-            <form action="{{ route('riwayat-pendidikan.store') }}" method="post">
+            <form action="{{ route('riwayat-pendidikan.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="sekolah">Nama Sekolah</label>
-                <input type="text" class="form-control" id="sekolah" name="sekolah" value="{{ old('sekolah') }}" placeholder="Nama Sekolah">
+                <input type="text" class="form-control" id="sekolah" name="sekolah" value="{{ $data->sekolah ?? old('sekolah') }}" placeholder="Nama Sekolah">
                 @error('sekolah')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <label for="jurusan">Jurusan</label>
-                <input type="text" class="form-control" id="jurusan" name="jurusan" value="{{ old('jurusan') }}" placeholder="Jurusan">
+                <input type="text" class="form-control" id="jurusan" name="jurusan" value="{{ $data->jurusan ?? old('jurusan') }}" placeholder="Jurusan">
                 @error('jurusan')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <label for="tahun_lulus">Tahun Lulus</label>
-                <input type="text" class="form-control" id="tahun_lulus" name="tahun_lulus" value="{{ old('tahun_lulus') }}" placeholder="Tahun Lulus">
+                <input type="text" class="form-control" id="tahun_lulus" name="tahun_lulus" value="{{ $data->tahun_lulus ?? old('tahun_lulus') }}" placeholder="Tahun Lulus">
                 @error('tahun_lulus')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror

@@ -14,7 +14,6 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">ID User</th>
                     <th scope="col">Perusahaan</th>
                     <th scope="col">Jabatan</th>
                     <th scope="col">Tahun Mulai Bekerja</th>
@@ -27,7 +26,6 @@
                 @foreach ($data as $row)
                 <tr>
                     <td>{{ ++$i}}</td>
-                    <td>{{ $row->id }}</td>
                     <td>{{ $row->perusahaan }}</td>
                     <td>{{ $row->jabatan }}</td>
                     <td>{{ $row->tahun_mbekerja }}</td>
