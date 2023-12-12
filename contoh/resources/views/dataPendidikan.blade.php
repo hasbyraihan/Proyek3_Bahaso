@@ -14,7 +14,6 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">ID User</th>
                     <th scope="col">Nama Sekolah</th>
                     <th scope="col">Jurusan</th>
                     <th scope="col">Tahun Lulus</th>
@@ -26,12 +25,11 @@
                 @foreach ($data as $row)
                 <tr>
                     <td>{{ ++$i}}</td>
-                    <td>{{ $row->id }}</td>
                     <td>{{ $row->sekolah }}</td>
                     <td>{{ $row->jurusan }}</td>
                     <td>{{ $row->tahun_lulus }}</td>
                     <td>{{ $row->created_at->format("D M Y") }}</td>
-                    <td style="display: flex; justify-content: space-between;">
+                    <td style="display: flexbox; justify-content: space-between;">
                         <a href="/tampilpendidikan/{{ $row->id }}" class="btn btn-outline-info">Edit</a>
                         <a href="/deletependidikan/{{ $row->id }}" class="btn btn-outline-danger">Delete</a>
                     </td>

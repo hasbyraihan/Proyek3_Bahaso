@@ -31,7 +31,7 @@
                     <td>{{ $row->tahun_mbekerja }}</td>
                     <td>{{ $row->bulan_mbekerja }}</td>
                     <td>{{ $row->created_at->format("D M Y") }}</td>
-                    <td style="display: flex; justify-content: space-between;">
+                    <td style="display: flexbox; justify-content: space-between;">
                         <a href="/tampilkerja/{{ $row->id }}" class="btn btn-outline-info">Edit</a>
                         <a href="/deletekerja/{{ $row->id }}" class="btn btn-outline-danger">Delete</a>
                     </td>

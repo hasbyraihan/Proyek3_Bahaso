@@ -42,7 +42,7 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3">Next</button>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
         <a type="submit" href="{{ route('tambahpengangguran') }}" class="btn btn-secondary mt-3">Prev</a>
 
