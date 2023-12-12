@@ -8,9 +8,9 @@
 
     <div class="container mt-5">
         <h1 class="text-center mb-5">Data Pengangguran</h1>
-        <a href="/tambahpengangguran" class="btn btn-success mb-3">Tambah</a>
-        <a href="/dashboard" class="btn btn-danger mb-3">Kembali</a>
-        <a href="/exportpdf" class="btn btn-outline-info">PDF</a>
+        <a href="/tambahpengangguran" class="btn btn-outline-success mb-3">Tambah</a>
+        <a href="/dashboard" class="btn btn-outline-danger mb-3 ml-2">Kembali</a>
+        <a href="/exportpdf" class="btn btn-outline-warning mb-3 ml-2">PDF</a>
         <table class="table" id="dataTable">
             <thead>
                 <tr>
@@ -41,9 +41,9 @@
                     <td>{{ $row->kota }}</td>
                     <td>{{ $row->created_at->format("D M Y") }}</td>
                     <td style="display: flex; justify-content: space-between;">
-                        <a href="/tampildata/{{ $row->id }}" class="btn btn-primary">Edit</a>
+                        <a href="/tampildata/{{ $row->id }}" class="btn btn-outline-info mr-2">Edit</a>
                         <!-- <a href="/delete/{{ $row->id }}" class="btn btn-danger" style="margin-left:10px;">Delete</a> -->
-                        <a href="/delete/{{ $row->id }}" class="btn btn-danger">Delete</a>
+                        <a href="/delete/{{ $row->id }}" class="btn btn-outline-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach
