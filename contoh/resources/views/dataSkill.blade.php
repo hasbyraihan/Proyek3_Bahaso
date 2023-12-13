@@ -30,10 +30,8 @@
                     <td>{{ $row->level }}</td>
                     <td>{{ $row->created_at->format("D M Y") }}</td>
                     <td style="display: flex; justify-content: space-between;">
-                        <a href="/tampildata/{{ $row->id }}" class="btn btn-outline-info">Edit</a>
-                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" style="margin-left:10px;" data-target="#Delete{{$row->id}}">
-                            Delete
-                        </button>
+                        <a href="/tampilskill/{{ $row->id }}" class="btn btn-outline-info">Edit</a>
+                        <a href="/deleteskill/{{ $row->id }}" class="btn btn-outline-danger">Delete</a>
                     </td>
                 </tr>
                 @endforeach
@@ -68,7 +66,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-            <a href="/deletekerja/{{$row->id}}" class="btn btn-primary">Ya</a>>
+            <a href="/deleteskill/{{$row->id}}" class="btn btn-primary">Ya</a>>
         </div>
         </div>
     </div>

@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('unemployeds', function (Blueprint $table) {
             $table->id();
+            
             $table->string('nama');
             $table->enum('jenkel', ['Pria', 'Wanita']);
+            $table->string('deskripsi');
             $table->bigInteger('notelp');
             $table->string('email');
             $table->string('alamat');
             $table->integer('kodepos');
             $table->string('kota');
-            $table->string('foto')->nullable(); // Kolom foto
-            $table->date('tanggal_lahir')->nullable(); // Kolom tanggal_lahir
+            $table->string('foto')->nullable();
+            $table->date('tanggal_lahir')->nullable();
             $table->timestamps();
         });
     }

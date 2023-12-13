@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Models\skill;
 use App\Models\Unemployed;
 use App\Models\RiwayatPendidikan;
 use App\Models\riwayatkerja;
@@ -18,10 +20,19 @@ class UnemployedController extends Controller
     }
 
     public function exportpdf(){
-        $data = Unemployed::all();
-
-        view()->share('data', $data);
-        $pdf = Pdf::loadView('data-pdf');
+        $idUser = Auth::id();
+        $dataUnemployed = Unemployed::where('id', $idUser)->get();
+        $dataPendidikan = RiwayatPendidikan::where('id_user', $idUser)->get();
+        $dataPekerjaan = Riwayatkerja::where('id_user', $idUser)->get();
+        $dataSkill = skill::where('id_user', $idUser)->get();
+    
+        $pdf = PDF::loadView('data-pdf', [
+            'dataUnemployed' => $dataUnemployed,
+            'dataPendidikan' => $dataPendidikan,
+            'dataPekerjaan' => $dataPekerjaan,
+            'dataSkill' => $dataSkill,
+        ]);
+    
         return $pdf->download("coba.pdf");
     }
     
@@ -47,9 +58,26 @@ class UnemployedController extends Controller
             $foto->move(public_path('uploads/foto/'), $filename);
             $data['foto'] = $filename;
         }
-    
-        Unemployed::create($data);
-        return redirect()->route('riwayat-pendidikan')->with('success', 'Data berhasil ditambah');
+        $existingRecord = Unemployed::find(1);
+
+        if ($existingRecord) {
+            $existingRecord->update($data);
+        } else {
+            Unemployed::create([
+            'id' => 1,
+            'nama' => $request->input('nama'),
+            'jenkel' => $request->input('jenkel'),
+            'deskripsi' => $request->input('deskripsi'),
+            'notelp' => $request->input('notelp'),
+            'email' => $request->input('email'),
+            'alamat' => $request->input('alamat'),
+            'kodepos' => $request->input('kodepos'),
+            'kota' => $request->input('kota'),
+            'tanggal_lahir' => $request->input('tanggal_lahir'),
+            ]);
+        }
+        // Unemployed::create($data);
+        return redirect()->route('riwayatpendidikan')->with('success', 'Data berhasil ditambah');
     }
     
     public function tampildata($id){
@@ -63,11 +91,6 @@ class UnemployedController extends Controller
 
         return redirect()->route('pengangguran')->with('success', 'Data berhasil di update');
     }
-    // public function destroy($id){
-    //     Unemployed::where('id',$id)->delete();
-    //     alert('Hapus Data','Data Berhasil Dihapus', 'success');
-    //     return redirect()->route('pengangguran');
-    // }
 
     public function destroy($id)
     {

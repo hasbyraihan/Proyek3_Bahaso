@@ -53,22 +53,60 @@ Route::middleware(['auth'])->group(function(){
     
     Route::get('/delete/{id}', [UnemployedController::class, 'destroy'])->name('destroy');
     
-    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Rute untuk Portofolio
     Route::get('/create_portofolio', [PortofolioController::class, 'create'])->name('portofolio.create');
     Route::post('/portofolio/tambah', [PortofolioController::class, 'store'])->name('portofolio.tambah');
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Route::get('/riwayat-pendidikan', [RiwayatPendidikanController::class, 'create'])->name('riwayat-pendidikan');
-    Route::post('/riwayat-pendidikan/store', [RiwayatPendidikanController::class, 'store'])->name('riwayat-pendidikan.store');
+    Route::get('/riwayat-pendidikan', [RiwayatPendidikanController::class, 'create'])->name('riwayatpendidikan');
+    Route::post('/riwayat-pendidikan/store', [RiwayatPendidikanController::class, 'store'])->name('riwayatpendidikan.store');
 
     Route::get('/pendidikan', [RiwayatPendidikanController::class, 'index'])->name('pendidikan');
-    Route::get('/pilihIdpendidikan', [RiwayatPendidikanController::class, 'selectId'])->name('pendidikan.selectId');
+    // Route::get('/pilihIdpendidikan', [RiwayatPendidikanController::class, 'selectId'])->name('pendidikan.selectId');
 
     Route::get('/tampilpendidikan/{id}', [RiwayatPendidikanController::class, 'tampilpendidikan'])->name('tampilpendidikan');
-    Route::post('/editpendidikan/{id}', [RiwayatPendidikanController::class, 'editpendidikan'])->name('editpendidikan');
+    Route::post('/updatependidikan/{id}', [RiwayatPendidikanController::class, 'updatependidikan'])->name('updatependidikan');
     
     Route::get('/deletependidikan/{id}', [RiwayatPendidikanController::class, 'deletependidikan'])->name('deletependidikan');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Hanya menampilkan form untuk menambah riwayat pekerjaan
@@ -85,17 +123,18 @@ Route::middleware(['auth'])->group(function(){
     
     Route::get('/deletekerja/{id}', [RiwayatkerjaController::class, 'deletekerja'])->name('deletekerja');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Hanya menampilkan form untuk menambah riwayat pekerjaan
     Route::get('/tambahskill', [SkillController::class, 'create'])->name('skill');
 
     // Menyimpan data dari form ke database
     Route::post('/skill/store', [SkillController::class, 'store'])->name('skill.store');
-    // Route::get('/skills', [SkillController::class, 'store'])->name('skills');
+
+    Route::get('/tampilskill/{id}', [SkillController::class, 'tampilskill'])->name('tampilskill');
+    Route::post('/updateskill/{id}', [SkillController::class, 'updateskill'])->name('updateskill');
 
     Route::get('/skill', [SkillController::class, 'index'])->name('skill');
-    Route::get('/pilihIdSkill', [SkillController::class, 'selectId'])->name('skill.selectId');
-    Route::get('/deleteskill/{id}', [SkillController::class, 'destroy'])->name('destroy');
 
-    // Route::get('/skill', [SkillController::class, 'index'])->name('skill');
+    Route::get('/deleteskill/{id}', [SkillController::class, 'destroy'])->name('destroy');
 });
 

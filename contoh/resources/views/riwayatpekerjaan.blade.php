@@ -94,7 +94,7 @@
 
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
-        <a type="submit" href="{{ route('riwayat-pendidikan') }}" class="btn btn-secondary mt-3">Prev</a>
+        <a type="submit" href="{{ route('riwayatpendidikan') }}" class="btn btn-secondary mt-3">Prev</a>
 
     </div>
 

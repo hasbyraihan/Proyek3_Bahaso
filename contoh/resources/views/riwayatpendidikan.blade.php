@@ -4,19 +4,19 @@
     <div class="container mt-5">
         <br>
         @if(isset($data))
-        <h2 class="mb-4">Edit Riwayat Pendidikan</h2>
-        <form action="{{ route('editpendidikan', $data->id) }}" method="post" enctype="multipart/form-data">
-        @method('POST') {{-- Use PUT method for updating data --}}
-    @else
-        <h2 class="mb-4">Tambah Riwayat Pendidikan</h2>
-        <form action="{{ route('riwayat-pendidikan.store') }}" method="post" enctype="multipart/form-data">
-    @endif
+            <h2 class="mb-4">Edit Riwayat Pendidikan</h2>
+            <form action="{{ route('updatependidikan', $data->id) }}" method="post" enctype="multipart/form-data">
+            @method('POST') {{-- Use PUT method for updating data --}}
+        @else
+            <h2 class="mb-4">Tambah Riwayat Pendidikan</h2>
+            <form action="{{ route('riwayatpendidikan.store') }}" method="post" enctype="multipart/form-data">
+        @endif
         @if ($errors->any())
             <div class="alert alert-danger">
                 Terdapat beberapa kesalahan input. Silakan periksa dan coba lagi.
             </div>
         @endif
-            <form action="{{ route('riwayat-pendidikan.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('riwayatpendidikan.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="sekolah">Nama Sekolah</label>

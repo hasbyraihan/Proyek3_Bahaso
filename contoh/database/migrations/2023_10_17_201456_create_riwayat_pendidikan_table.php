@@ -15,6 +15,8 @@ class CreateRiwayatPendidikanTable extends Migration
     {
         Schema::create('riwayat_pendidikan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('unemployeds');
             $table->string('sekolah');
             $table->string('jurusan');
             $table->year('tahun_lulus');

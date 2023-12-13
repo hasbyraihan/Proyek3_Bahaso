@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\RiwayatPendidikan;
 
@@ -14,24 +16,25 @@ class RiwayatPendidikanController extends Controller
     }
     
     public function index(){
-        $data = RiwayatPendidikan::all();
+        $idUser = Auth::id();
+        $data = RiwayatPendidikan::where('id_user', $idUser)->get();
+        // dd($data);
         return view('dataPendidikan', compact('data'))->with('i',(request()->input('page',1)-1));
-    }
-
-    public function selectId(){
-        return view('riwayatpendidikan.selectId');
     }
 
     public function tampilpendidikan($id){
 
-        $data = RiwayatPendidikan::find($id);
+        $data = RiwayatPendidikan::where('id', $id)->first();
         return view('riwayatpendidikan', compact('data'));
     }
 
-    public function editpendidikan(Request $request, $id){
-        $data = RiwayatPendidikan::find($id);
-        $data->update($request->all());
-
+    public function updatependidikan(Request $request, $id){
+        $idUser = Auth::id();
+        $data = RiwayatPendidikan::where('id_user', $idUser)->find($id);
+    
+        if ($data) {
+            $data->update($request->all());
+        }
         return redirect()->route('pendidikan')->with('success', 'Data berhasil di update');
     }
 
@@ -50,6 +53,7 @@ class RiwayatPendidikanController extends Controller
 
     public function store(Request $request)
     {
+        // dd($idUser);
         $request->validate([
             'sekolah' => 'required',
             'jurusan' => 'required',
@@ -60,10 +64,15 @@ class RiwayatPendidikanController extends Controller
             'tahun_lulus.required' => 'Tahun Lulus harus diisi.',
             'tahun_lulus.numeric' => 'Tahun Lulus harus berupa angka.',
         ]);
+        $idUser = Auth::id();
+        RiwayatPendidikan::create([
+            'id_user' => $idUser,
+            'sekolah' => $request->input('sekolah'),
+            'jurusan' => $request->input('jurusan'),
+            'tahun_lulus' => $request->input('tahun_lulus'),
+        ]);
     
-        // Jika validasi berhasil, simpan data ke database
-        RiwayatPendidikan::create($request->all());
-    
+        // dd($idUser);
         // Redirect ke halaman lain atau kembali ke form dengan pesan sukses
         return redirect()->route('pendidikan')->with('success', 'Data berhasil ditambah');
     }

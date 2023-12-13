@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('riwayatkerja', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('unemployeds');
             $table->string('perusahaan');
             $table->string('jabatan');
             $table->year('tahun_mbekerja');

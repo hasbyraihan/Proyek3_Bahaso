@@ -85,7 +85,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/pengangguran" class="nav-link {{ Request::is('pengangguran') ? 'active' : ''}}">
+            <a href="/tambahpengangguran" class="nav-link {{ Request::is('tambahpengangguran') ? 'active' : ''}}">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Pengangguran
@@ -97,6 +97,14 @@
               <i class="nav-icon far fa-image"></i>
               <p>
                 Riwayat Pendidikan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/portofolios" class="nav-link {{ Request::is('portofolio') ? 'active' : ''}}">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Portofolio
               </p>
             </a>
           </li>
@@ -113,6 +121,14 @@
               <i class="nav-icon far fa-image"></i>
               <p>
                 Skill
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/exportpdf" class="nav-link {{ Request::is('exportpdf') ? 'active' : ''}}">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Print PDF
               </p>
             </a>
           </li>
@@ -137,7 +153,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">CiVi.io</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.2.0

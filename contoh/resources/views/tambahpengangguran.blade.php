@@ -54,6 +54,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="deskripsi">Deskripsi Diri</label>
+                    <textarea class="form-control" id="deskripsi" name="deskripsi">{{ $data->deskripsi ?? old('deskripsi') }}</textarea>
+                    @error('deskripsi')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="alamat">Alamat</label>
                     <textarea class="form-control" id="alamat" name="alamat">{{ $data->alamat ?? old('alamat') }}</textarea>
                     @error('alamat')
@@ -140,7 +148,7 @@
                 success: function(response) {
                     // Handle respons dari server, jika diperlukan
                     // Misalnya, Anda dapat menampilkan pesan sukses atau pengalihkan pengguna
-                    window.location.href = "{{ route('riwayat-pendidikan') }}";
+                    window.location.href = "{{ route('riwayatpendidikan') }}";
                 },
                 error: function(xhr, textStatus, errorThrown) {
                     // Handle error jika terjadi kesalahan

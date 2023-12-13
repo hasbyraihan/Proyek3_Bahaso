@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class RiwayatPendidikan extends Model
 {
     protected $table = 'riwayat_pendidikan'; // Sesuaikan dengan nama tabel yang sesuai
-    protected $fillable = ['sekolah', 'jurusan', 'tahun_lulus'];
+    protected $fillable = ['id_user', 'sekolah', 'jurusan', 'tahun_lulus'];
 
-    // Definisikan relasi atau metode lain sesuai kebutuhan Anda di sini
+    public function unemployed()
+    {
+        return $this->belongsTo(Unemployed::class, 'id_user');
+    }
 }

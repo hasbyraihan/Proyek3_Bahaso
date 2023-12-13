@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('skill', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user')->references('id')->on('unemployeds');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('unemployeds');
             $table->string('namaskill');
             $table->string('level');
             // Tambahkan kolom lain sesuai kebutuhan

@@ -18,6 +18,7 @@
                     <th scope="col">foto</th>
                     <th scope="col">Name</th>
                     <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">Deskripsi</th>
                     <th scope="col">Nomor Telepon</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Alamat</th>
@@ -34,6 +35,7 @@
                     <td><img src="{{ asset('uploads/foto/' . $row->foto) }}" width="100" alt=""></td>
                     <td>{{ $row->nama }}</td>
                     <td>{{ $row->jenkel }}</td>
+                    <td>{{ $row->deskripsi }}</td>
                     <td>{{ $row->notelp }}</td>
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->alamat }}</td>

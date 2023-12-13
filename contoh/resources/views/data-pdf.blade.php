@@ -1,110 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ats CV</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ats CV</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+            }
 
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+            header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
 
-        section {
-            margin-bottom: 30px;
-        }
+            section {
+                margin-bottom: 30px;
+            }
 
-        h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-        }
+            h2 {
+                border-bottom: 2px solid #333;
+                padding-bottom: 5px;
+                margin-bottom: 10px;
+            }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+            h5 {
+            display: flex;
+            justify-content: flex-end;
+            }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
-</head>
-<body>
+            th, td {
+                border: 1px solid #ddd;
+                padding: 10px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
 
-    @foreach ($data as $row)
+    @foreach ($dataUnemployed as $unemployed)
         <header>
-            <h1>{{ $row->nama }}'s CV</h1>
-            <p>Email: {{ $row->email }} | Phone: 0{{ $row->notelp }} | Address: {{ $row->alamat }}</p>
+            <h1>{{ $unemployed->nama }}'s CV</h1>
+            <p>Email: {{ $unemployed->email }} | Phone: 0{{ $unemployed->notelp }} | Address: {{ $unemployed->alamat }}</p>
         </header>
 
         <section>
-          <h2>Description</h2>
-          <p>{{ $row->description }}</p>
+          <h2>About</h2>
+          <p>{{ $unemployed->deskripsi }}</p>
         </section>
+        
+
+        <section>
+            <h2>Work Experience</h2>
+            @foreach ($dataPekerjaan as $pekerjaan)
+            <h3>{{ $pekerjaan->jabatan }}</h3>
+            <p>{{ $pekerjaan->perusahaan }}</p>
+            <h5>{{ $pekerjaan->bulan_mbekerja }}, {{ $pekerjaan->tahun_mbekerja }} - {{ $pekerjaan->bulan_sbekerja }}, {{ $pekerjaan->tahun_sbekerja }}</h5>
+            @endforeach
+        </section>
+
 
         <section>
             <h2>Education</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Degree</th>
+                        <th>Degree </th>
                         <th>University</th>
                         <th>Year</th>
                     </tr>
-                </thead>
+                </thead>    
                 <tbody>
+                    @foreach ($dataPendidikan as $pendidikan)
                     <tr>
-                        <td>Bachelor's in Computer Science</td>
-                        <td>University of XYZ</td>
-                        <td>Year of Graduation</td>
+                        <td>{{ $pendidikan->jurusan }}</td>
+                        <td>{{ $pendidikan->sekolah }}</td>
+                        <td>{{ $pendidikan->tahun_lulus }}</td>
                     </tr>
                     <!-- Add more education entries as needed -->
+                    @endforeach
                 </tbody>
             </table>
         </section>
-
-        <section>
-            <h2>Work Experience</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Position</th>
-                        <th>Company</th>
-                        <th>Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Software Developer</td>
-                        <td>ABC Tech Solutions</td>
-                        <td>2018 - Present</td>
-                    </tr>
-                    <!-- Add more work experience entries as needed -->
-                </tbody>
-            </table>
-        </section>
-
+        
         <section>
             <h2>Skills</h2>
             <ul>
-                <li>Programming Languages: PHP, JavaScript, etc.</li>
-                <li>Web Technologies: HTML, CSS, etc.</li>
-                <!-- Add more skills as needed -->
+                @foreach ($dataSkill as $skill)
+                    <li>{{ $skill['namaskill'] }},{{ $skill['level'] }}.</li>
+                @endforeach
             </ul>
         </section>
+
+        
+       
 
         <!-- Add more sections for projects, certifications, etc. -->
 
     @endforeach
 
 </body>
-</html>
+
+    </html>

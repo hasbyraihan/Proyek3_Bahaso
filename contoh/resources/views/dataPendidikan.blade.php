@@ -14,6 +14,7 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">ID User</th>
                     <th scope="col">Nama Sekolah</th>
                     <th scope="col">Jurusan</th>
                     <th scope="col">Tahun Lulus</th>
@@ -25,6 +26,7 @@
                 @foreach ($data as $row)
                 <tr>
                     <td>{{ ++$i}}</td>
+                    <td>{{ $row->id_user }}</td>
                     <td>{{ $row->sekolah }}</td>
                     <td>{{ $row->jurusan }}</td>
                     <td>{{ $row->tahun_lulus }}</td>
